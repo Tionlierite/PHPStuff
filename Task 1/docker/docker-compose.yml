@@ -10,3 +10,6 @@ services:
     extra_hosts:
       - "nsk.time.test:127.0.0.1"
       - "l-a.time.test:127.0.0.1"
+    volumes:
+      - ../src/nsk.time.test.php:/var/www/html/nsk.time.test/index.php
+      - ../src/l-a.time.test.php:/var/www/html/l-a.time.test/index.php
