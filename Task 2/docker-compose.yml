@@ -1,0 +1,27 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+    image: nginx-time-test
+    container_name: nginx-time-test-container
+  php:
+    build: ./src
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - postgres
+    image: php-time-test
+    container_name: php-time-test-container
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: tion
+      POSTGRES_PASSWORD: dotwrk
+      POSTGRES_DB: visitsDB
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    container_name: postgres-time-test-container
