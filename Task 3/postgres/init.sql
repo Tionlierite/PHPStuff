@@ -1,0 +1,5 @@
+CREATE TABLE visits (
+    id SERIAL PRIMARY KEY,
+    domain VARCHAR(255),
+    visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
