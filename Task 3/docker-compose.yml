@@ -1,8 +1,6 @@
 services:
   nginx:
     build: ./nginx
-    ports:
-      - "8080:80"
     depends_on:
       - php
     image: nginx-time-test
@@ -25,3 +23,11 @@ services:
     volumes:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     container_name: postgres-time-test-container
+  varnish:
+    build: ./varnish
+    ports:
+      - "80:80"
+    depends_on:
+      - nginx
+    image: varnish-time-test
+    container_name: varnish-time-test-container

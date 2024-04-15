@@ -20,3 +20,5 @@ WORKDIR /var/www/html
 COPY . .
 
 CMD composer install --prefer-dist --no-interaction && php-fpm
+
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
