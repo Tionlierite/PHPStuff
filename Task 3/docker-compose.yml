@@ -7,6 +7,7 @@ services:
       - php
     image: nginx-time-test
     container_name: nginx-time-test-container
+    command: sh -c "sleep 10 && nginx -g 'daemon off;'"
   php:
     build: ./src
     volumes:

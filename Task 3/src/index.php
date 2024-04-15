@@ -24,7 +24,13 @@ if ($path !== "/favicon.ico") {
 
     $apiKey = $_ENV['API_KEY'];
     $units = "metric";
-    $url = "http://api.openweathermap.org/data/2.5/weather?q={$city}&units={$units}&appid={$apiKey}";
+    $params = [
+        'q' => $city,
+        'units' => $units,
+        'appid' => $apiKey,
+    ];
+
+    $url = 'http://api.openweathermap.org/data/2.5/weather?' . http_build_query($params);
 
     $response = file_get_contents($url);
     $data = json_decode($response, true);
