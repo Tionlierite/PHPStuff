@@ -25,9 +25,15 @@ services:
     container_name: postgres-time-test-container
   varnish:
     build: ./varnish
-    ports:
-      - "80:80"
     depends_on:
       - nginx
     image: varnish-time-test
     container_name: varnish-time-test-container
+  nginx-proxy:
+    build: ./nginx-proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - varnish
+    image: nginx-proxy-time-test
+    container_name: nginx-proxy-time-test-container
